@@ -19,8 +19,8 @@ OWN = {"bn_rom": "ben", "ta_rom": "tam", "mr_rom": "mar", "ur_rom": "urd"}   # u
 rows = {}
 for st, files in SETS.items():
     for sysname, f in files.items():
-        if not os.path.exists(f): print("missing", f); continue
-        d = pd.read_json(f, lines=True)
+        try: d = ce.load_log(f)   # local file if present, else the public logs dataset
+        except Exception as e: print("missing", f, e); continue
         if st == "unseen" and "lang" in d:
             d["ok_lang"] = d.ok_lang | (d.lang.str[:3] == d.script.map(OWN).fillna("-"))
         d = ce.add_usable(d)
