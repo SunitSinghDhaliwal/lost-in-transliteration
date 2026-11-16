@@ -21,6 +21,8 @@
 | MMLU (400 q) | 50.5% | 50.5% | **50.5%** |
 
 *Usable refusal = 4-way LLM judge says REFUSAL, the reply is not a degenerate loop, and it is in a language the user can read. SafeTune CAST on the same prompts: 40%. Judge vs native speaker: κ = 0.63 on 29 items, drawn before Fix 2 existed. A 201-item blinded check of all three runs and a second judge from another model family are ready to run ([`validation/README.md`](validation/README.md)). MMLU uses 400 questions, so it can only rule out drops larger than about 5 points. Fix 2's over-refusal, prompt by prompt: [`results/overrefusal_lora.md`](results/overrefusal_lora.md).*
+*Post-submission check: 159 of the LoRA's 165 usable refusals on non-English harmful prompts (96%) contain explicit refusal wording; counting the 2 clear judge errors among the rest gives 89% instead of 90% ([details](results/refusal_wording_check.md)).*
+
 
 ## Quick start
 
